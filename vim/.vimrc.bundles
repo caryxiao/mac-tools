@@ -1,6 +1,5 @@
 " VIM Bundle 插件配置
 
-Plugin 'leiming/Vundle.vim'
 Plugin 'bufexplorer.zip'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'kien/ctrlp.vim'
