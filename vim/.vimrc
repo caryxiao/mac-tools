@@ -1,5 +1,4 @@
 set nocompatible
-syntax enable
 " --- START 配置插件
 "  设置插件的安装目录
 filetype off
@@ -10,19 +9,25 @@ call vundle#begin()
 " 加载插件和默认的配置文件
 let VIMIDE_DIR=expand("<sfile>:p:h")
 let RC_BUNDLES=expand(VIMIDE_DIR.'/.vimrc.bundles')
-let RC_LOCAL=expand(VIMIDE_DIR.'/.vimrc.local')
 
 if filereadable(RC_BUNDLES)
 	exec 'source '.RC_BUNDLES
 endif
 
-if filereadable(RC_LOCAL)
-	exec 'source '.RC_LOCAL
-endif	
+call vundle#end()
 
 filetype plugin indent on
 
+syntax enable
 " --- END 配置插件
+
+let mapleader = ","
+
+let RC_LOCAL=expand(VIMIDE_DIR.'/.vimrc.local')
+
+if filereadable(RC_LOCAL)
+	exec 'source '.RC_LOCAL
+endif
 
 set backspace=indent,eol,start
 set smartindent
@@ -35,10 +40,15 @@ set shiftwidth=4
 set foldcolumn=2
 
 set incsearch
+set incsearch		" 实时搜索
+set hlsearch		" 搜索时高亮显示被找到的文本
 set showmatch
 set foldmethod=marker
 
 set history=10000
+"允许撤销次数
+set undolevels=1000
+
 " 把所有数字当成十进制
 set nrformats=
 
@@ -62,7 +72,7 @@ endif
 
 autocmd BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/*,/usr/local/etc/nginx/* set filetype=nginx | syntax on
 
-let editorconfig=expand('/data/tools/src/vim/.editorconfig')
+let editorconfig=expand('~/.vim/.editorconfig')
 if filereadable(editorconfig)
 	let g:editorconfig_Beautifier=editorconfig
 endif
@@ -118,7 +128,61 @@ scriptencoding utf-8
 set errorformat=%m\ in\ %f\ on\ line\ %l
 
 " 配色Vim为256
-set t_Co=256
-set bg=dark
-colorscheme default
+"Select a colorscheme
+colorscheme molokai
+set guifont=Monaco:h12
+set guifontwide=Monaco:h12
+""set guifontwide=Hei_Regular:h14
+let g:molokai_original = 1
 
+" 区分终端和GUI界面"{{{
+if has('gui_running')
+	set guioptions-=T " 隐藏工具栏
+	set guioptions-=m " 隐藏菜单栏
+	set guioptions-=L " 隐藏左侧滚动条
+	set showtabline=2 " 显示Tab栏
+	set guioptions+=r	"显示gui右边滚动条
+
+	"字体
+	""set guifont=Menlo:h12
+	""set lines=200 columns=120
+
+	if has("gui_macvim")
+		set imdisable	"Set input method off
+		lcd ~/Develop/	"如果为空文件，则自动设置为指定目录
+		set autochdir	"自动切换到文件当前目录
+
+		" 清理菜单
+		" aunmenu Window
+		" aunmenu Tools
+	endif
+else
+	set ambiwidth=single
+	syntax enable
+endif
+"}}}
+
+"关于高亮
+:let hs_highlight_delimiters=1            " 高亮定界符
+:let hs_highlight_boolean=1               " 把True和False识别为关键字
+:let hs_highlight_types=1                 " 把基本类型的名字识别为关键字
+:let hs_highlight_more_types=1            " 把更多常用类型识别为关键字
+:let hs_highlight_debug=1                 " 高亮调试函数的名字
+:let hs_allow_hash_operator=1             " 阻止把#高亮为错误
+
+"允许折叠
+set foldenable
+"手动折叠
+set foldmethod=manual
+
+"共享剪贴板
+set clipboard+=unnamed
+
+" 总是显示状态行
+set laststatus=2
+
+" 永远屏蔽补全Scrtach Preview窗口
+set completeopt-=preview
+
+" 设置当文件被改动时自动载入
+set autoread

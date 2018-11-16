@@ -1,15 +1,15 @@
 " VIM Bundle 插件配置
 
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'bufexplorer.zip'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'leiming/nerdtree'
+Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'DoxygenToolkit.vim'
 Plugin 'L9'
 Plugin 'majutsushi/tagbar'
-Plugin 'leiming/cscope_maps'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
@@ -25,13 +25,16 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'rayburgemeestre/phpfolding.vim'
 Plugin 'Blackrush/vim-gocode'
 Plugin 'mattn/emmet-vim'
+Plugin 'AutoClose'
+Plugin 'Lokaltog/vim-powerline'
 
 " Other
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'joequery/Stupid-EasyMotion'
-Plugin 'evanmiller/nginx-vim-syntax'
+Plugin 'chr4/nginx.vim'
 Plugin 'othree/html5.vim'
 Plugin 'maksimr/vim-jsbeautify'
+Plugin 'plasticboy/vim-markdown'
 
 " Color Schemes
 Plugin 'rickharris/vim-blackboard'

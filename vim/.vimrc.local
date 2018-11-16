@@ -4,20 +4,21 @@ nnoremap ]m  <Esc> : tabnext<CR>
 nnoremap <C-t>      : tabnew<CR>
 inoremap <C-t><Esc> : tabnew<CR>
 
-nnoremap <F5>          : VJNERDTreeRefresh<CR>
-nnoremap <silent><F7>  : TagbarToggle<CR>
-nnoremap \t            : TagbarToggle<CR>
-nnoremap <silent><F10> : NERDTreeTabsToggle<CR>
-nnoremap \n            : NERDTreeTabsToggle<CR>
+"NERDTree
+autocmd vimenter * NERDTree
+map <C-n> :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeToggle<CR>
+noremap <Leader>sf <Esc>:NERDTreeFind<CR>
+" NerdTree没有箭头
+let g:NERDTreeDirArrows = 0
+" 隐藏帮助说明和书签
+let NERDTreeMinimalUI = 1
 
 " 快速使.vimrc配置生效
 map <silent> <Leader>V :source ~/.vimrc<CR>:filetype detect<CR>
 
 " 快速保存
 map <silent> `s <Esc>:w<CR>:exe ":echo 'saved'"<CR>
-
-" 零时获取sudo权限[w!!]
-cmap w!! %!sudo tee > /dev/null %
 
 noremap <Leader>bm <Esc>:CtrlPMRU<CR>
 let g:ctrlp_custom_ignore = {
@@ -46,23 +47,11 @@ noremap  <Leader>C :TCommentMaybeInline<cr>
 noremap  <Leader>c :TCommentBlock<cr>
 xnoremap <Leader>c :TCommentBlock<cr>
 
-" NERDTree<F10>
-" 左侧文件菜单插件
-
-" Scroll from source
-noremap <Leader>sf <Esc>:NERDTreeFind<CR>
-" NerdTree没有箭头
-let g:NERDTreeDirArrows = 0
-" 隐藏帮助说明和书签
-let NERDTreeMinimalUI = 1
-
-" 默认是否用 l 代替 o 打开文件
-let g:vj_nerdtree_compatible = 1
-
 " tagbar右侧结构树<F12>
 " tagbar-phpctags
 let g:tagbar_indent = 1
 let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
 " -- 用「相对行数」+ [j/k] 或「绝对行数」+ G 快速移动
 " 相对行数2，绝对行数值为1。
 let g:tagbar_show_linenumbers = 1
@@ -83,6 +72,9 @@ let g:tagbar_type_go = {
     \}
 
 let g:tagbar_type_javascript = {'ctagsbin' : '/usr/local/bin/jsctags' }
+
+nmap <leader>tb :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
 
 " cscope
 "" Avoiding duplicate cscope database error within VIM
@@ -119,13 +111,9 @@ vnoremap <Leader>: :EasyAlign:s0l1<CR>
 autocmd FileType javascript noremap <buffer> <Leader>ff  : call JsBeautify()<CR>
 autocmd FileType html noremap <buffer> <Leader>ff        : call HtmlBeautify()<CR>
 autocmd FileType css noremap <buffer> <Leader>ff         : call CSSBeautify()<CR>
-autocmd FileType php noremap <buffer> <Leader>ff         : call VjPhpBeautify()<CR>
 autocmd FileType javascript vnoremap <buffer> <Leader>ff : call RangeJsBeautify()<CR>
 autocmd FileType html vnoremap <buffer> <Leader>ff       : call RangeHtmlBeautify()<CR>
 autocmd FileType css vnoremap <buffer> <Leader>ff        : call RangeCSSBeautify()<CR>
-
-" 切换php/html/javascript文件类型以配合缩进和语法补全
-autocmd FileType html,php,javascript map <buffer> <Leader>ft :call VjFileTypeToggle()<CR>
 
 " EasyMotion
 " 快速移动
@@ -133,9 +121,5 @@ autocmd FileType html,php,javascript map <buffer> <Leader>ft :call VjFileTypeTog
 " map <C-O> <Leader><Leader>w
 " map <C-E> <Leader><Leader>W
 
-" 永远屏蔽补全Scrtach Preview窗口
-set completeopt-=preview
-
-nnoremap <C-W>O     :call VjMaximizeToggle()<CR>
-nnoremap <C-W>o     :call VjMaximizeToggle()<CR>
-nnoremap <C-W><C-O> :call VjMaximizeToggle()<CR>
+"powerline
+let g:Powerline_symbols = 'fancy'
