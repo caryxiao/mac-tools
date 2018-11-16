@@ -36,7 +36,7 @@ if [ ! -f "$VIMRC" ]; then
 fi
 
 if [ ! -f "$VIMRCLOCAL" ]; then
-	cp -f ${SCRIPTDIR}"/.vimrc.local" $VIMRLOCAL
+	cp -f ${SCRIPTDIR}"/.vimrc.local" $VIMRCLOCAL
 	if [ ! -f "$VIMRCLOCAL" ]; then
 		echo "移动.vimrc.local文件失败, 路径: ${SCRIPTDIR}/.vimrc.local -> $VIMRCLOCAL"
 		exit;
