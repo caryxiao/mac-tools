@@ -11,7 +11,7 @@ let VIMIDE_DIR=expand("<sfile>:p:h")
 let RC_BUNDLES=expand(VIMIDE_DIR.'/.vimrc.bundles')
 
 if filereadable(RC_BUNDLES)
-	exec 'source '.RC_BUNDLES
+    exec 'source '.RC_BUNDLES
 endif
 
 call vundle#end()
@@ -26,7 +26,7 @@ let mapleader = ","
 let RC_LOCAL=expand(VIMIDE_DIR.'/.vimrc.local')
 
 if filereadable(RC_LOCAL)
-	exec 'source '.RC_LOCAL
+    exec 'source '.RC_LOCAL
 endif
 
 set backspace=indent,eol,start
@@ -40,8 +40,8 @@ set shiftwidth=4
 set foldcolumn=2
 
 set incsearch
-set incsearch		" 实时搜索
-set hlsearch		" 搜索时高亮显示被找到的文本
+set incsearch       " 实时搜索
+set hlsearch        " 搜索时高亮显示被找到的文本
 set showmatch
 set foldmethod=marker
 
@@ -63,18 +63,22 @@ set nrformats=
 set wildmenu
 set wildmode=full
 
+" 显示TAB
+:set list
+:set listchars=tab:>-,trail:-
+
 " 自动备份
 if has('vms')
-	set nobackup
-else 
-	set backup
+    set nobackup
+else
+    set backup
 endif
 
 autocmd BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/*,/usr/local/etc/nginx/* set filetype=nginx | syntax on
 
 let editorconfig=expand('~/.vim/.editorconfig')
 if filereadable(editorconfig)
-	let g:editorconfig_Beautifier=editorconfig
+    let g:editorconfig_Beautifier=editorconfig
 endif
 
 " 备份文件位置
@@ -137,28 +141,28 @@ let g:molokai_original = 1
 
 " 区分终端和GUI界面"{{{
 if has('gui_running')
-	set guioptions-=T " 隐藏工具栏
-	set guioptions-=m " 隐藏菜单栏
-	set guioptions-=L " 隐藏左侧滚动条
-	set showtabline=2 " 显示Tab栏
-	set guioptions+=r	"显示gui右边滚动条
+    set guioptions-=T " 隐藏工具栏
+    set guioptions-=m " 隐藏菜单栏
+    set guioptions-=L " 隐藏左侧滚动条
+    set showtabline=2 " 显示Tab栏
+    set guioptions+=r	"显示gui右边滚动条
 
-	"字体
-	""set guifont=Menlo:h12
-	""set lines=200 columns=120
+    "字体
+    ""set guifont=Menlo:h12
+    ""set lines=200 columns=120
 
-	if has("gui_macvim")
-		set imdisable	"Set input method off
-		lcd ~/Develop/	"如果为空文件，则自动设置为指定目录
-		set autochdir	"自动切换到文件当前目录
+    if has("gui_macvim")
+        set imdisable	"Set input method off
+        lcd ~/Develop/	"如果为空文件，则自动设置为指定目录
+        set autochdir	"自动切换到文件当前目录
 
-		" 清理菜单
-		" aunmenu Window
-		" aunmenu Tools
-	endif
+        " 清理菜单
+        " aunmenu Window
+        " aunmenu Tools
+    endif
 else
-	set ambiwidth=single
-	syntax enable
+    set ambiwidth=single
+    syntax enable
 endif
 "}}}
 

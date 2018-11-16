@@ -12,7 +12,7 @@ noremap <Leader>sf <Esc>:NERDTreeFind<CR>
 " NerdTree没有箭头
 let g:NERDTreeDirArrows = 0
 " 隐藏帮助说明和书签
-let NERDTreeMinimalUI = 1
+" :let NERDTreeMinimalUI = 1
 
 " 快速使.vimrc配置生效
 map <silent> <Leader>V :source ~/.vimrc<CR>:filetype detect<CR>
@@ -61,15 +61,15 @@ let g:tagbar_phpctags_memory_limit = '512M'
 let g:tagbar_width = 30
 
 let g:tagbar_type_go = {
-    \ 'ctagstype': 'go',
-    \ 'kinds' : [
-        \'p:package',
-        \'f:function',
-        \'v:variables',
-        \'t:type',
-        \'c:const'
-    \]
-    \}
+            \ 'ctagstype': 'go',
+            \ 'kinds' : [
+            \'p:package',
+            \'f:function',
+            \'v:variables',
+            \'t:type',
+            \'c:const'
+            \]
+            \}
 
 let g:tagbar_type_javascript = {'ctagsbin' : '/usr/local/bin/jsctags' }
 
