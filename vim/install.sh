@@ -62,7 +62,7 @@ fi
 echo "初始化VIM配置文件成功!"
 
 if [ ! -d "$VIMDIR/bundle/Vundle.vim" ]; then
-	git clone https://github.com/VundleVim/Vundle.vim.git $VIMDIE/bundle/Vundle.vim
+	git clone https://github.com/VundleVim/Vundle.vim.git $VIMDIR/bundle/Vundle.vim
 	echo "下载Vundle.vim成功"
 fi
 
