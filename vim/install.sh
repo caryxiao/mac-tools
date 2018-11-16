@@ -36,7 +36,7 @@ if [ ! -f "$VIMRC" ]; then
 fi
 
 if [ ! -f "$VIMRCLOCAL" ]; then
-	cp -f ${SCRIPTDIR}/.vimrc.local $VIMRLOCAL
+	cp -f ${SCRIPTDIR}"/.vimrc.local" $VIMRLOCAL
 	if [ ! -f "$VIMRCLOCAL" ]; then
 		echo "移动.vimrc.local文件失败, 路径: ${SCRIPTDIR}/.vimrc.local -> $VIMRCLOCAL"
 		exit;
@@ -44,7 +44,7 @@ if [ ! -f "$VIMRCLOCAL" ]; then
 fi
 
 if [ ! -f "$VIMRCBUNDLES" ]; then
-	cp -f ${SCRIPTDIR}/.vimrc.bundles $VIMRCBUNDLES
+	cp -f ${SCRIPTDIR}"/.vimrc.bundles" $VIMRCBUNDLES
 	if [ ! -f "$VIMRCBUNDLES" ]; then
 		echo "移动.vimrc.bundles 文件失败, 路径: ${SCRIPTDIR}/.vimrc.bundles -> $VIMRCBUNDLES"
 		exit;
