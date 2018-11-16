@@ -1,0 +1,141 @@
+nnoremap [m  <Esc> : tabprevious<CR>
+nnoremap ]m  <Esc> : tabnext<CR>
+
+nnoremap <C-t>      : tabnew<CR>
+inoremap <C-t><Esc> : tabnew<CR>
+
+nnoremap <F5>          : VJNERDTreeRefresh<CR>
+nnoremap <silent><F7>  : TagbarToggle<CR>
+nnoremap \t            : TagbarToggle<CR>
+nnoremap <silent><F10> : NERDTreeTabsToggle<CR>
+nnoremap \n            : NERDTreeTabsToggle<CR>
+
+" 快速使.vimrc配置生效
+map <silent> <Leader>V :source ~/.vimrc<CR>:filetype detect<CR>
+
+" 快速保存
+map <silent> `s <Esc>:w<CR>:exe ":echo 'saved'"<CR>
+
+" 零时获取sudo权限[w!!]
+cmap w!! %!sudo tee > /dev/null %
+
+noremap <Leader>bm <Esc>:CtrlPMRU<CR>
+let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\v[\/]\.(git|hg|svn)$|(node_modules|tmp)$',
+            \ 'file': '\v\.(exe|so|dll)$|.prjide',
+            \ 'link': 'some_bad_symbolic_links',
+            \ }
+
+"智能大小写
+set ignorecase
+set smartcase
+
+nmap <F3> <Esc>:CtrlP<CR>
+
+" DoxygenToolkit.vim
+" 生成Doxygen风格的文档注释
+noremap <Leader>dc <Esc>:Dox<CR>
+noremap <Leader>da <Esc>:DoxAuthor<CR>
+
+" tcommment_vim
+" 代码注释
+noremap  <Leader>x :TComment<cr>
+noremap  <Leader>X :TCommentRight<cr>
+xnoremap <Leader>x :TCommentMaybeInline<cr>
+noremap  <Leader>C :TCommentMaybeInline<cr>
+noremap  <Leader>c :TCommentBlock<cr>
+xnoremap <Leader>c :TCommentBlock<cr>
+
+" NERDTree<F10>
+" 左侧文件菜单插件
+
+" Scroll from source
+noremap <Leader>sf <Esc>:NERDTreeFind<CR>
+" NerdTree没有箭头
+let g:NERDTreeDirArrows = 0
+" 隐藏帮助说明和书签
+let NERDTreeMinimalUI = 1
+
+" 默认是否用 l 代替 o 打开文件
+let g:vj_nerdtree_compatible = 1
+
+" tagbar右侧结构树<F12>
+" tagbar-phpctags
+let g:tagbar_indent = 1
+let g:tagbar_autofocus = 1
+" -- 用「相对行数」+ [j/k] 或「绝对行数」+ G 快速移动
+" 相对行数2，绝对行数值为1。
+let g:tagbar_show_linenumbers = 1
+let g:tagbar_zoomwidth = 1
+
+let g:tagbar_phpctags_memory_limit = '512M'
+let g:tagbar_width = 30
+
+let g:tagbar_type_go = {
+    \ 'ctagstype': 'go',
+    \ 'kinds' : [
+        \'p:package',
+        \'f:function',
+        \'v:variables',
+        \'t:type',
+        \'c:const'
+    \]
+    \}
+
+let g:tagbar_type_javascript = {'ctagsbin' : '/usr/local/bin/jsctags' }
+
+" cscope
+"" Avoiding duplicate cscope database error within VIM
+set nocscopeverbose
+
+" phpfolding.vim
+let php_folding=0
+autocmd FileType php setlocal foldmethod=manual
+autocmd FileType php nnoremap ++  :DisablePHPFolds<CR>
+autocmd FileType php nnoremap --  :EnableFastPHPFolds<CR>
+
+" 在{与}之间换行，能自动插入新行
+autocmd FileType php,javascript inoremap {<CR> {<CR>}<Esc>O<BS><Tab>
+
+" 避免和supertab冲突
+let g:SuperTabDefaultCompletionType = "context"
+
+" 关闭phpcomplete 跳转功能,完全使用 ctags 与 cscope
+let g:phpcomplete_enhance_jump_to_definition=0
+
+" phpqa
+let g:phpqa_codesniffer_args = "--standard=Zend"
+" Don't run codesniffer on save (default = 1)
+let g:phpqa_codesniffer_autorun = 0
+let g:phpqa_messdetector_autorun = 0
+
+" vim-easy-align
+vmap <Enter> <Plug>(EasyAlign)
+
+vnoremap <Leader>: :EasyAlign:s0l1<CR>
+
+" vim-jsbeautify
+" unmap! <c-f>
+autocmd FileType javascript noremap <buffer> <Leader>ff  : call JsBeautify()<CR>
+autocmd FileType html noremap <buffer> <Leader>ff        : call HtmlBeautify()<CR>
+autocmd FileType css noremap <buffer> <Leader>ff         : call CSSBeautify()<CR>
+autocmd FileType php noremap <buffer> <Leader>ff         : call VjPhpBeautify()<CR>
+autocmd FileType javascript vnoremap <buffer> <Leader>ff : call RangeJsBeautify()<CR>
+autocmd FileType html vnoremap <buffer> <Leader>ff       : call RangeHtmlBeautify()<CR>
+autocmd FileType css vnoremap <buffer> <Leader>ff        : call RangeCSSBeautify()<CR>
+
+" 切换php/html/javascript文件类型以配合缩进和语法补全
+autocmd FileType html,php,javascript map <buffer> <Leader>ft :call VjFileTypeToggle()<CR>
+
+" EasyMotion
+" 快速移动
+" let g:EasyMotion_leader_key='<leader>'
+" map <C-O> <Leader><Leader>w
+" map <C-E> <Leader><Leader>W
+
+" 永远屏蔽补全Scrtach Preview窗口
+set completeopt-=preview
+
+nnoremap <C-W>O     :call VjMaximizeToggle()<CR>
+nnoremap <C-W>o     :call VjMaximizeToggle()<CR>
+nnoremap <C-W><C-O> :call VjMaximizeToggle()<CR>
