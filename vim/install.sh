@@ -7,7 +7,7 @@
 VIMDIR=~/.vim
 VIMRC=~/.vimrc
 VIMRCLOCAL=~/.vimrc.local
-VIMRCBUNDLES=~/.vimrc.bundles
+VIMRCPLUG=~/.vimrc.plug
 SCRIPTDIR=$(cd "$(dirname "$0")"; pwd)
 
 version=`vim --version|head -n 1|awk '{print $5}'`
@@ -19,10 +19,18 @@ then
     exit
 fi
 
-if [ ! -d "$VIMDIR/bundle" ]; then
-    mkdir -p ${VIMDIR}/bundle
-    if [ ! -d "$VIMDIR/bundle" ]; then
-        echo "创建 $VIMDIR/bundle 失败"
+if [ ! -d "$VIMDIR/autoload" ]; then
+    mkdir -p "$VIMDIR/autoload"
+    if [ ! -d "$VIMDIR/autoload" ]; then
+        echo "创建 $VIMDIR/autoload 失败"
+        exit
+    fi
+fi
+
+if [ ! -d "$VIMDIR/plugged" ]; then
+    mkdir -p "${VIMDIR}/plugged"
+    if [ ! -d "$VIMDIR/plugged" ]; then
+        echo "创建 $VIMDIR/plugged 失败"
         exit
     fi
 fi
@@ -43,10 +51,10 @@ if [ ! -f "$VIMRCLOCAL" ]; then
     fi
 fi
 
-if [ ! -f "$VIMRCBUNDLES" ]; then
-    cp -f ${SCRIPTDIR}"/.vimrc.bundles" $VIMRCBUNDLES
-    if [ ! -f "$VIMRCBUNDLES" ]; then
-        echo "移动.vimrc.bundles 文件失败, 路径: ${SCRIPTDIR}/.vimrc.bundles -> $VIMRCBUNDLES"
+if [ ! -f "$VIMRCPLUG" ]; then
+    cp -f ${SCRIPTDIR}"/.vimrc.plug" $VIMRCPLUG
+    if [ ! -f "$VIMRCPLUG" ]; then
+        echo "移动.vimrc.plug 文件失败, 路径: ${SCRIPTDIR}/.vimrc.plug -> $VIMRCPLUG"
         exit;
     fi
 fi
@@ -61,12 +69,13 @@ fi
 
 echo "初始化VIM配置文件成功!"
 
-if [ ! -d "$VIMDIR/bundle/Vundle.vim" ]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git $VIMDIR/bundle/Vundle.vim
-    echo "下载Vundle.vim成功"
+if [ ! -f "$VIMDIR/autoload/plug.vim" ]; then
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    echo "下载plug.vim成功"
 fi
 
 if [ $? -ne 0 ]; then
-    echo "下载Vundle.vim失败"
+    echo "下载plug.vim失败"
     exit
 fi

@@ -1,24 +1,22 @@
 set nocompatible
 " --- START 配置插件
 "  设置插件的安装目录
-filetype off
 
 " 设置运行时的路径
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+
+call plug#begin('~/.vim/plugged')
 " 加载插件和默认的配置文件
 let VIMIDE_DIR=expand("<sfile>:p:h")
-let RC_BUNDLES=expand(VIMIDE_DIR.'/.vimrc.bundles')
+let RC_PLUG=expand(VIMIDE_DIR.'/.vimrc.plug')
 
-if filereadable(RC_BUNDLES)
-    exec 'source '.RC_BUNDLES
+if filereadable(RC_PLUG)
+    exec 'source '.RC_PLUG
 endif
 
-call vundle#end()
+call plug#end()
 
-filetype plugin indent on
+syntax on
 
-syntax enable
 " --- END 配置插件
 
 let mapleader = ","
@@ -48,6 +46,13 @@ set foldmethod=marker
 set history=10000
 "允许撤销次数
 set undolevels=1000
+
+" 相对行号的显示
+augroup relative_numbser
+ autocmd!
+ autocmd InsertEnter * :set norelativenumber
+ autocmd InsertLeave * :set relativenumber
+augroup END
 
 " 把所有数字当成十进制
 set nrformats=
@@ -190,3 +195,13 @@ set completeopt-=preview
 
 " 设置当文件被改动时自动载入
 set autoread
+
+"光标移动到buffer的顶部和底部时候保持3行距离
+set scrolloff=3
+
+" 映射全选+复制 ctrl+a
+map <C-A> ggVGY
+map! <C-A> <Esc>ggVGY
+"map <F12> gg=G
+" 选中状态下 Ctrl+c 复制
+vmap <C-c> "+y

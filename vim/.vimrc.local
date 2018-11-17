@@ -114,12 +114,13 @@ autocmd FileType css noremap <buffer> <Leader>ff         : call CSSBeautify()<CR
 autocmd FileType javascript vnoremap <buffer> <Leader>ff : call RangeJsBeautify()<CR>
 autocmd FileType html vnoremap <buffer> <Leader>ff       : call RangeHtmlBeautify()<CR>
 autocmd FileType css vnoremap <buffer> <Leader>ff        : call RangeCSSBeautify()<CR>
+" for json
+autocmd FileType json noremap <buffer> <Leader>ff :call JsonBeautify()<CR>
+" for jsx
+autocmd FileType jsx noremap <buffer> <Leader>ff :call JsxBeautify()<CR>
 
 " EasyMotion
 " 快速移动
 " let g:EasyMotion_leader_key='<leader>'
 " map <C-O> <Leader><Leader>w
 " map <C-E> <Leader><Leader>W
-
-"powerline
-let g:Powerline_symbols = 'fancy'
