@@ -2,8 +2,14 @@
 
 ## VIM工具
 
-Vim使用plug.vim来管理插件
+Vim使用 [vim-plug](https://github.com/junegunn/vim-plug) 来管理插件
 
-下载文件后直接执行vim目录下的install.sh 文件即可完成初始化
-脚本会将配置文件复制到你的HOME目录下面
-打开VIM然后执行命令:PlugInstall即可安装所有插件
+
+
+1. git clone https://github.com/caryxiao/mac-tools.git
+2. 执行vim目录中的install.sh文件, 安装文件会自动复制文件到你的HOME目录下面
+3. 打开VIM，然后执行命令 `:PlugInstall`，然后插件管理器会自动为你安装插件
+
+
+
+该配置提供了常用的一些配置, 具体的自己看配置文件...
