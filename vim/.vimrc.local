@@ -49,6 +49,7 @@ xnoremap <Leader>c :TCommentBlock<cr>
 
 " tagbar右侧结构树<F12>
 " tagbar-phpctags
+let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
 let g:tagbar_indent = 1
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
