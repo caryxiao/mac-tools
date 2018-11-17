@@ -43,3 +43,7 @@ Plug 'tpope/vim-vividchalk'
 Plug 'Lokaltog/vim-distinguished'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'fisadev/fisa-vim-colorscheme'
+
+" Git
+Plug 'gregsexton/gitv', {'on': ['Gitv']}
+Plug 'tpope/vim-fugitive'
