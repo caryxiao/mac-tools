@@ -59,6 +59,14 @@ if [ ! -f "$VIMRCPLUG" ]; then
     fi
 fi
 
+if [ ! -d "$VIMDIR/colors" ]; then
+    cp -rf ${SCRIPTDIR}/colors ~/.vim/
+    if [ ! -f "$VIMDIR/colors/molokai.vim" ]; then
+        echo "molokai.vim失败, 路径: ${SCRIPTDIR}/colors/molokai.vim -> ${VIMDIR}/colors"
+        exit;
+    fi
+fi
+
 if [ ! -f "$VIMDIR/.editorconfig" ]; then
     cp -f ${SCRIPTDIR}/.editorconfig ${VIMDIR}/.editorconfig
     if [ ! -f "$VIMDIR/.editorconfig" ]; then
