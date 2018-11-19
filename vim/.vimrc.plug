@@ -47,3 +47,6 @@ Plug 'fisadev/fisa-vim-colorscheme'
 " Git
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
 Plug 'tpope/vim-fugitive'
+
+" Docker
+Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'}
