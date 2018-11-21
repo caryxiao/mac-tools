@@ -13,7 +13,8 @@ noremap <Leader>sf <Esc>:NERDTreeFind<CR>
 let g:NERDTreeDirArrows = 0
 " 隐藏帮助说明和书签
 " :let NERDTreeMinimalUI = 1
-
+" 解决linux下目录名称显示不完全问题
+let NERDTreeNodeDelimiter = "\t"
 " 快速使.vimrc配置生效
 map <silent> <Leader>V :source ~/.vimrc<CR>:filetype detect<CR>
 
