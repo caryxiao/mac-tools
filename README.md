@@ -17,9 +17,11 @@ Vim使用 [vim-plug](https://github.com/junegunn/vim-plug) 来管理插件
 ## 更新记录
 
 2018-11-24
+
 添加使用brew安装sshpass的方法
 
 2018-11-22
+
 解决linux下 VIM的nerdtree插件 显示文件夹名称和文件名称不全的问题
 
 2018-11-19
