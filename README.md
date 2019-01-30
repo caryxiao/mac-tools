@@ -23,6 +23,7 @@ Vim使用 [vim-plug](https://github.com/junegunn/vim-plug) 来管理插件
 ## 更新记录
 
 2019-01-30
+
 添加lnav安装，使用，配置
 
 2018-11-24
