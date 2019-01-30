@@ -14,7 +14,14 @@ Vim使用 [vim-plug](https://github.com/junegunn/vim-plug) 来管理插件
 
 该配置提供了常用的一些配置, 具体的自己看配置文件...
 
+## lnav
+
+请查看 lnav目录下的README.md文件
+
 ## 更新记录
+
+2019-01-30
+添加lnav安装，使用，配置
 
 2018-11-24
 

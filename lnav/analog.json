@@ -1,0 +1,60 @@
+{
+  "analog": {
+    "title": "analog log",
+    "description": "format analog log",
+    "url": "",
+    "regex": {
+      "syslog": {
+        "pattern": "^(?<client_ip>[\\w\\.:]+)\\s-\\s(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})\\s-\\s(?<level_no>\\d+)\\s-\\s\\[(?<level>\\w+)\\]\\s\\[(?<trace_id>\\w+)\\]\\s(?<body>.*)(?:\\n(?:.|\\n)*)?$"
+      },
+      "json": {
+        "pattern": "^(?<client_ip>[\\w\\.:]+)\\s-\\s(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})\\s-\\s(?<level_no>\\d+)\\s-\\s\\[(?<level>\\w+)\\]\\s\\[(?<trace_id>\\w+)\\]\\s(?<json>\\{?(?<key>.*?):(?<val>[\"].*[\"]?|.*?)[,\\W]\\}?)(?:\\n(?:.|\\n)*)?$"
+      }
+    },
+    "level-field": "level",
+    "level": {
+      "error": "error",
+      "debug": "debug",
+      "info": "info",
+      "stats": "notice",
+      "warning": "waring",
+      "critical": "critical",
+      "fatal": "emergency|alert"
+    },
+    "timestamp-field": "timestamp",
+    "value": {
+      "client_ip": {
+        "kind": "string",
+        "identifier": true
+      },
+      "timestamp": {
+        "kind": "string"
+      },
+      "level_no": {
+        "kind": "integer"
+      },
+      "level": {
+        "kind": "integer",
+        "identifier": true
+      },
+      "trace_id": {
+        "kind": "string",
+        "identifier": true
+      },
+      "body": {
+        "kind": "string"
+      },
+      "json": {
+        "kind": "json"
+      }
+    },
+    "sample": [
+      {
+        "line": "127.0.0.1 - 2019-01-30 15:05:58 - 6 - [info] [5c514cd6339ea] [use time] 0.000028(s) request uri: /account/login"
+      },
+      {
+        "line": "127.0.0.1 - 2019-01-29 09:15:15 - 3 - [error] [5c5019a36963a] {\"name\":\"Cary\",\"url\":\"http://www.sun190.com\",\"age\":30}"
+      }
+    ]
+  }
+}
