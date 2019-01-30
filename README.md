@@ -16,6 +16,8 @@ Vim使用 [vim-plug](https://github.com/junegunn/vim-plug) 来管理插件
 
 ## lnav
 
+查看日志的工具 linux下也可以使用
+
 请查看 lnav目录下的README.md文件
 
 ## 更新记录
