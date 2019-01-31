@@ -9,6 +9,9 @@
       },
       "json": {
         "pattern": "^(?<client_ip>[\\w\\.:]+)\\s-\\s(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})\\s-\\s(?<level_no>\\d+)\\s-\\s\\[(?<level>\\w+)\\]\\s\\[(?<trace_id>\\w+)\\]\\s(?<json>\\{?(?<key>.*?):(?<val>[\"].*[\"]?|.*?)[,\\W]\\}?)(?:\\n(?:.|\\n)*)?$"
+      },
+      "server": {
+        "pattern": "^(?<timestamp>\\S{3,8}\\s\\d{2}\\s\\d{2}:\\d{2}:\\d{2})\\s(?<env>\\w+)\\s(?<project>[^\\/\\s]+)\\/[^\\/\\[\\]]+\\[\\d+\\]:\\s(?<client_ip>[\\w\\.:]+)\\s\\[(?<level>\\w+)\\]\\s\\[(?<trace_id>\\w+)\\]\\s(?<body>.*)(?:\\n(?:.|\\n)*)?$"
       }
     },
     "level-field": "level",
@@ -34,7 +37,7 @@
         "kind": "integer"
       },
       "level": {
-        "kind": "integer",
+        "kind": "string",
         "identifier": true
       },
       "trace_id": {
@@ -46,6 +49,14 @@
       },
       "json": {
         "kind": "json"
+      },
+      "project": {
+        "kind": "string",
+        "identifier": true
+      },
+      "env": {
+        "kind": "string",
+        "identifier": true
       }
     },
     "sample": [
@@ -54,6 +65,9 @@
       },
       {
         "line": "127.0.0.1 - 2019-01-29 09:15:15 - 3 - [error] [5c5019a36963a] {\"name\":\"Cary\",\"url\":\"http://www.sun190.com\",\"age\":30}"
+      },
+      {
+        "line": "Jan 31 10:06:16 demo pay-center/_all[24731]: localhost: [info] [5c524cd7a328e] 支付通知商户重试次数: 49 消息: {\"retry_count\":48,\"return_url\":\"https:\\/\\/test.c\",\"notify_params\":{\"status\":1,\"pay_type\":1,\"merchant_no\":\"10000\",\"pay_mod\":1,\"pay_id\":\"100000000000001053411\",\"order_id\":\"101111111211\",\"money\":10,\"order_time\":1548855385,\"pay_success_time\":1548855521,\"sign\":\"8a05fccdf6f53c38845a6d58ef2ed2724f03e4a3\"}}"
       }
     ]
   }
