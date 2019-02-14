@@ -1,0 +1,62 @@
+{
+  "golang": {
+    "title": "golang log",
+    "description": "format golang log",
+    "url": "",
+    "regex": {
+      "local": {
+        "pattern": "^\\[(?<level>\\w+)\\]\\:\\s(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})\\s-\\s(?<body>.*)(?:\\n(?:.|\\n)*)?$"
+      }
+    },
+    "level-field": "level",
+    "level": {
+      "error": "error",
+      "debug": "debug",
+      "info": "info",
+      "stats": "notice",
+      "warning": "waring",
+      "critical": "critical",
+      "fatal": "emergency|alert"
+    },
+    "timestamp-field": "timestamp",
+    "value": {
+      "client_ip": {
+        "kind": "string",
+        "identifier": true
+      },
+      "timestamp": {
+        "kind": "string"
+      },
+      "level_no": {
+        "kind": "integer"
+      },
+      "level": {
+        "kind": "string",
+        "identifier": true
+      },
+      "trace_id": {
+        "kind": "string",
+        "identifier": true
+      },
+      "body": {
+        "kind": "string"
+      },
+      "json": {
+        "kind": "json"
+      },
+      "project": {
+        "kind": "string",
+        "identifier": true
+      },
+      "env": {
+        "kind": "string",
+        "identifier": true
+      }
+    },
+    "sample": [
+      {
+        "line": "[info]: 2019-02-13 18:18:40 - test msg"
+      }
+    ]
+  }
+}
