@@ -22,6 +22,10 @@ Vim使用 [vim-plug](https://github.com/junegunn/vim-plug) 来管理插件
 
 ## 更新记录
 
+2019-02-19
+
+添加zsh配置, 使用antigen来管理zsh模板和插件
+
 2019-01-30
 
 添加lnav安装，使用，配置
