@@ -1,0 +1,62 @@
+{
+  "php": {
+    "title": "php log",
+    "description": "format log",
+    "url": "",
+    "regex": {
+      "magento": {
+        "pattern": "^\\[(?<timestamp>\\d{4}\\-\\d{2}\\-\\d{2}\\s\\d{2}\\:\\d{2}\\:\\d{2})\\]\\s\\w+\\.(?<level>\\w+)\\:\\s(?<body>.*)$"
+      }
+    },
+    "level-field": "level",
+    "level": {
+      "error": "error",
+      "debug": "debug",
+      "info": "info",
+      "stats": "notice",
+      "warning": "waring",
+      "critical": "critical",
+      "fatal": "emergency|alert"
+    },
+    "timestamp-field": "timestamp",
+    "value": {
+      "client_ip": {
+        "kind": "string",
+        "identifier": true
+      },
+      "timestamp": {
+        "kind": "string"
+      },
+      "level_no": {
+        "kind": "integer"
+      },
+      "level": {
+        "kind": "string",
+        "identifier": true
+      },
+      "trace_id": {
+        "kind": "string",
+        "identifier": true
+      },
+      "body": {
+        "kind": "string"
+      },
+      "json": {
+        "kind": "json"
+      },
+      "project": {
+        "kind": "string",
+        "identifier": true
+      },
+      "env": {
+        "kind": "string",
+        "identifier": true
+      }
+    },
+    "sample": [
+      {
+        "line": "[2019-07-15 05:11:13] main.DEBUG: getProductBasePrice Product: 22 price: 12.95 [] []"
+      }
+    ]
+  }
+}
