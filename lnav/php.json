@@ -6,6 +6,9 @@
     "regex": {
       "magento": {
         "pattern": "^\\[(?<timestamp>\\d{4}\\-\\d{2}\\-\\d{2}\\s\\d{2}\\:\\d{2}\\:\\d{2})\\]\\s\\w+\\.(?<level>\\w+)\\:\\s(?<body>.*)$"
+      },
+      "magento_trace_id": {
+        "pattern": "^\\[(?<timestamp>\\d{4}\\-\\d{2}\\-\\d{2}\\s\\d{2}\\:\\d{2}\\:\\d{2})\\]\\s(?<trace_id>[0-9a-zA-z]*)\\s\\w+\\.(?<level>\\w+)\\:\\s(?<body>.*)$"
       }
     },
     "level-field": "level",
@@ -56,6 +59,9 @@
     "sample": [
       {
         "line": "[2019-07-15 05:11:13] main.DEBUG: getProductBasePrice Product: 22 price: 12.95 [] []"
+      },
+      {
+        "line": "[2019-07-16 10:27:11] 5D2DA67F05C18 main.DEBUG: Model Override Test after: [\"de_DE\",\"DE\"] []"
       }
     ]
   }
