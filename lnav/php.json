@@ -32,7 +32,7 @@
     },
     "timestamp-field": "timestamp",
     "value": {
-      "client_ip": {
+      "ip": {
         "kind": "string",
         "identifier": true
       },
