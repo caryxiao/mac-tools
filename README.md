@@ -22,6 +22,11 @@ Vim使用 [vim-plug](https://github.com/junegunn/vim-plug) 来管理插件
 
 ## 更新记录
 
+2020-09-15
+由于php安装zookeeper只能使用比较老版本的, 但是homebrew是最新的,我们这里提取了一个历史版本`zookeeper.rb`
+在根目录下使用`brew install ./Formula/zookeeper.rb安装`
+
+
 2019-02-19
 
 添加zsh配置, 使用antigen来管理zsh模板和插件
